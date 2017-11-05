@@ -5,7 +5,7 @@ var searchData=
   ['indianred',['INDIANRED',['../namespace_a_s_g_e_1_1_c_o_l_o_u_r_s.html#a958f9ca4588280d51ae515816ba41a8e',1,'ASGE::COLOURS']]],
   ['indigo',['INDIGO',['../namespace_a_s_g_e_1_1_c_o_l_o_u_r_s.html#a037bb4d19e5f9df5e7475890d1c5835c',1,'ASGE::COLOURS']]],
   ['init',['init',['../class_a_s_g_e_1_1_game.html#a53a1b2f02a4a0df1402a2770d40868d4',1,'ASGE::Game::init()'],['../class_a_s_g_e_1_1_input.html#ad9af0281184f2a2a053cf12187bdd9d6',1,'ASGE::Input::init()'],['../class_a_s_g_e_1_1_renderer.html#acb87c2764b8322e9f775acee97c78ad4',1,'ASGE::Renderer::init()']]],
-  ['initapi',['initAPI',['../class_a_s_g_e_1_1_game.html#ade73f5e4a75e3fb8dfcae45f826ded96',1,'ASGE::Game::initAPI()'],['../class_a_s_g_e_1_1_o_g_l_game.html#a1dcc42809f2158faee3dcc7ebca212d4',1,'ASGE::OGLGame::initAPI()']]],
+  ['initapi',['initAPI',['../class_a_s_g_e_1_1_game.html#a540469ded5f13abda34897fdfd22b6de',1,'ASGE::Game::initAPI()'],['../class_a_s_g_e_1_1_o_g_l_game.html#ad105b03f241a25b9b31a343e088a3383',1,'ASGE::OGLGame::initAPI()']]],
   ['input',['Input',['../class_a_s_g_e_1_1_input.html',1,'ASGE::Input'],['../class_a_s_g_e_1_1_input.html#a847719fb169e39a9e21b309253f5c496',1,'ASGE::Input::Input()']]],
   ['input_2eh',['Input.h',['../_input_8h.html',1,'']]],
   ['inputevents_2eh',['InputEvents.h',['../_input_events_8h.html',1,'']]],
