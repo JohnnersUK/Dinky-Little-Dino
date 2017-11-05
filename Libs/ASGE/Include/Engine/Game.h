@@ -92,7 +92,8 @@ namespace ASGE {
 		*  @return The result of the initialisation operation.
 		*  @see WindowMode
 		*/
-		virtual bool initAPI(Renderer::WindowMode mode) = 0;
+		virtual bool initAPI(Renderer::WindowMode mode = 
+			Renderer::WindowMode::WINDOWED) = 0;
 		
 		/**
 		*  Pure virtual function for terminating the API.

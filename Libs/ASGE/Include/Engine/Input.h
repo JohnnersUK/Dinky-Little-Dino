@@ -143,7 +143,7 @@ namespace ASGE {
 		bool use_threads = true;
 
 	private:
-		using InputFnc = std::function<void(SharedEventData)>;
+		using InputFnc = std::function<void(const SharedEventData)>;
 		int registerCallback(EventType, InputFnc);
 		
 		using InputFncPair = std::pair<EventType, InputFnc>;

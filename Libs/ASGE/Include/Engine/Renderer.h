@@ -87,10 +87,11 @@ namespace ASGE {
 		*  framework and the window creation.
 		*  @param w The width of the window in pixels. 
 		*  @param h The height of the window in pixels.
-		*  @param fullscreen Should the window launch in fullscreen.
+		*  @param mode Should the window launch in fullscreen.
 		*  @return True if success.
+		*  @see WindowMode
 		*/
-		virtual bool init(int w, int h, bool fullscreen) = 0;
+		virtual bool init(int w, int h, Renderer::WindowMode mode) = 0;
 		
 		/**
 		*  Exits the renderer and performs clean-up. 

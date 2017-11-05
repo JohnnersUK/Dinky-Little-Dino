@@ -49,7 +49,8 @@ void EndlessGame::render(const ASGE::GameTime& us)
 
 void EndlessGame::keyHandler(const ASGE::SharedEventData data)
 {
-	ASGE::KeyEvent* key_event = static_cast<ASGE::KeyEvent*>(data.get());
+	const ASGE::KeyEvent* key_event = 
+		static_cast<const ASGE::KeyEvent*>(data.get());
 	
 	auto key = key_event->key;
 	auto action = key_event->action;
