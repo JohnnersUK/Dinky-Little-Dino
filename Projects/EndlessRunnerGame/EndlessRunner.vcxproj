@@ -11,10 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\AnimSprite.h" />
     <ClInclude Include="..\..\Source\Game.h" />
     <ClInclude Include="..\..\Source\GameFont.h" />
+    <ClInclude Include="..\..\Source\PlayerDino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\AnimSprite.cpp" />
     <ClCompile Include="..\..\Source\Game.cpp" />
     <ClCompile Include="..\..\Source\GameFont.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />

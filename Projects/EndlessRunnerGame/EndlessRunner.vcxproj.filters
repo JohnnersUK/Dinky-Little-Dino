@@ -15,6 +15,12 @@
     <ClInclude Include="..\..\Source\GameFont.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\AnimSprite.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PlayerDino.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\GameFont.cpp">
@@ -26,5 +32,6 @@
     <ClCompile Include="..\..\Source\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\AnimSprite.cpp" />
   </ItemGroup>
 </Project>
