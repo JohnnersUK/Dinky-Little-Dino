@@ -24,6 +24,9 @@
     <ClInclude Include="..\..\Source\Actions.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Platforms.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\GameFont.cpp">
@@ -42,6 +45,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Action.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Platforms.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>

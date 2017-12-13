@@ -4,6 +4,7 @@
 #include <Engine\Sprite.h>
 
 #include "PlayerDino.h"
+#include "Platforms.h"
 
 namespace ASGE {
 	struct GameTime;
@@ -87,7 +88,10 @@ private:
 	ASGE::Sprite* title;
 	
 	PlayerDino player;
+	Platforms platforms;
 
-	float player_count = 0.0f;;
+	float player_count = 0.0f;
 	float other_count = 0.0f;
+
+	int block_count = 0;
 };

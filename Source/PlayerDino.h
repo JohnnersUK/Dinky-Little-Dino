@@ -1,5 +1,6 @@
 #pragma once
 #include "animSprite.h"
+#include "Platforms.h"
 
 class PlayerDino
 {
@@ -9,10 +10,19 @@ public:
 
 	bool init(ASGE::Renderer *renderer);
 
-	void update();
+	void update(Platforms platform);
 	void render(ASGE::Renderer *renderer);
 
 	void move();
+
+	void collisionCheck(Platforms platform);
+
+	int getPlayerX();
+	int getPlayerY();
+
+	void setPlayerY(int new_yPos);
+	void setPlayerYVel(int new_yVel);
+
 
 private:
 	AnimSprite running;

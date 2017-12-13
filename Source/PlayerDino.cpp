@@ -32,7 +32,7 @@ bool PlayerDino::init(ASGE::Renderer *renderer)
 	return true;
 }
 
-void PlayerDino::update()
+void PlayerDino::update(Platforms platform)
 {
 	if (yPos < 550)
 	{
@@ -47,6 +47,7 @@ void PlayerDino::update()
 		yPos = 550;
 		yVel = 0;
 	}
+	collisionCheck(platform);
 
 	running.updatePosition(xPos, yPos);
 	running.updateFrame();
@@ -89,4 +90,39 @@ void PlayerDino::move()
 	{
 		xVel = 0;
 	}
+}
+
+void PlayerDino::collisionCheck(Platforms platform)
+{
+	for (int x = 0; x != platform.getSize(); x++)
+	{
+		if ((xPos + 16) < (platform.getBlockX(x) + 96) && (xPos + 80) > platform.getBlockX(x))
+		{
+			if (yPos + 80 > platform.getBlockY(x))
+			{
+				yPos = platform.getBlockY(x) - 80;
+				yVel = 0;
+			}
+		}
+	}
+}
+
+int PlayerDino::getPlayerX()
+{
+	return xPos;
+}
+
+int PlayerDino::getPlayerY()
+{
+	return yPos;
+}
+
+void PlayerDino::setPlayerY(int new_yPos)
+{
+	yPos = new_yPos;
+}
+
+void PlayerDino::setPlayerYVel(int new_yVel)
+{
+	yVel = new_yVel;
 }

@@ -15,6 +15,7 @@
     <ClInclude Include="..\..\Source\AnimSprite.h" />
     <ClInclude Include="..\..\Source\Game.h" />
     <ClInclude Include="..\..\Source\GameFont.h" />
+    <ClInclude Include="..\..\Source\Platforms.h" />
     <ClInclude Include="..\..\Source\PlayerDino.h" />
   </ItemGroup>
   <ItemGroup>
@@ -23,6 +24,7 @@
     <ClCompile Include="..\..\Source\Game.cpp" />
     <ClCompile Include="..\..\Source\GameFont.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\Platforms.cpp" />
     <ClCompile Include="..\..\Source\PlayerDino.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

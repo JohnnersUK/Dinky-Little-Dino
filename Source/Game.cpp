@@ -95,12 +95,19 @@ void EndlessGame::update(const ASGE::GameTime& us)
 		other_count += us.delta_time.count() * 00.1;
 		if (player_count > 5)
 		{
-			player.update();
+			player.update(platforms);
 			player_count = 0;
 		}
 		if (other_count > 1)
 		{
 			updateBackdrop();
+			platforms.updateBlocks();
+			block_count++;
+			if (block_count == 96)
+			{
+				platforms.getNextBlock(renderer.get());
+				block_count = 0;
+			}
 			other_count = 0;
 		}
 	}
@@ -112,6 +119,7 @@ void EndlessGame::render(const ASGE::GameTime& us)
 	renderer->renderSprite(*backdrop1);
 	renderer->renderSprite(*backdrop2);
 	renderer->renderSprite(*title);
+	platforms.renderBlocks(renderer.get());
 	player.render(renderer.get());
 }
 
@@ -178,4 +186,5 @@ void EndlessGame::updateBackdrop()
 	}
 
 }
+
 
