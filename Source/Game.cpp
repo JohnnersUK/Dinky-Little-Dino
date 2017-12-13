@@ -6,6 +6,8 @@
 
 #include "Actions.h"
 
+#include <string>
+
 EndlessGame::~EndlessGame()
 {
 	this->inputs->unregisterCallback(key_handler_id);
@@ -49,11 +51,13 @@ bool EndlessGame::init()
 	renderer->setWindowTitle("Endless Runner");
 	renderer->setClearColour(ASGE::COLOURS::BLACK);
 	renderer->setSpriteMode(ASGE::SpriteSortMode::IMMEDIATE);
-	toggleFPS();
 
 	this->inputs->use_threads = false;
 	this->inputs->addCallbackFnc(
 		ASGE::EventType::E_KEY, &EndlessGame::keyHandler, this);
+
+	GameFont::fonts[0] = new GameFont(
+		renderer->loadFont("..\\..\\Resources\\Fonts\\Double_Bubble_shadow.otf", 42), "default", 42);
 
 	backdrop1 = renderer->createRawSprite();
 	backdrop1->xPos(0);
@@ -95,7 +99,11 @@ void EndlessGame::update(const ASGE::GameTime& us)
 		other_count += us.delta_time.count() * 00.1;
 		if (player_count > 5)
 		{
-			player.update(platforms);
+			player_score++;
+			if (player.update(platforms))
+			{
+				game_action = GameAction::DEFAULT;
+			}
 			player_count = 0;
 		}
 		if (other_count > 1)
@@ -116,9 +124,12 @@ void EndlessGame::update(const ASGE::GameTime& us)
 
 void EndlessGame::render(const ASGE::GameTime& us)
 {
+	std::string score_string;
+	score_string = "Score: " + std::to_string(player_score);
 	renderer->renderSprite(*backdrop1);
 	renderer->renderSprite(*backdrop2);
 	renderer->renderSprite(*title);
+	renderer->renderText(score_string.c_str(), 10, 20, 1.0, ASGE::COLOURS::DARKBLUE);
 	platforms.renderBlocks(renderer.get());
 	player.render(renderer.get());
 }

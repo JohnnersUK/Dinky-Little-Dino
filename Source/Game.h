@@ -94,4 +94,5 @@ private:
 	float other_count = 0.0f;
 
 	int block_count = 0;
+	int player_score = 0;
 };

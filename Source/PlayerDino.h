@@ -10,12 +10,12 @@ public:
 
 	bool init(ASGE::Renderer *renderer);
 
-	void update(Platforms platform);
+	bool update(Platforms platform);
 	void render(ASGE::Renderer *renderer);
 
 	void move();
 
-	void collisionCheck(Platforms platform);
+	bool collisionCheck(Platforms platform);
 
 	int getPlayerX();
 	int getPlayerY();

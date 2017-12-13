@@ -18,19 +18,28 @@ void Platforms::getNextBlock(ASGE::Renderer *renderer)
 	blocks.resize(size-1);
 	switch (int random_int = std::rand() % 2 + 1)
 	{
-		case 0:
-		{
-
-			break;
-		}
 		case 1:
 		{
-			current_height--;
+			if (current_height > 3.5)
+			{
+				current_height--;
+			}
 			break;
 		}
 		case 2:
 		{
-			current_height++;
+			if (current_height < 6.5)
+			{
+				current_height++;
+			}
+			break;
+		}
+		case 3:
+		{
+			break;
+		}
+		default:
+		{
 			break;
 		}
 	}
