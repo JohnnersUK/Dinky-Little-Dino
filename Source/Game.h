@@ -1,6 +1,9 @@
 #pragma once
 #include <atomic>
 #include <Engine\OGLGame.h>
+#include <Engine\Sprite.h>
+
+#include "PlayerDino.h"
 
 namespace ASGE {
 	struct GameTime;
@@ -73,6 +76,17 @@ private:
 	*/
 	void keyHandler(ASGE::SharedEventData data);
 
+	void processActions();
+
+	void updateBackdrop();
+
 private:
 	int key_handler_id = -1;  /**< Input Callback ID. The callback ID assigned by the game engine. */
+	ASGE::Sprite* backdrop1;
+	ASGE::Sprite* backdrop2;
+	
+	PlayerDino player;
+
+	float player_count = 0.0f;;
+	float other_count = 0.0f;
 };

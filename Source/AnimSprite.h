@@ -7,16 +7,16 @@
 class AnimSprite
 {
 public:
-	AnimSprite();
+	AnimSprite() = default;
 	~AnimSprite();
 
 	bool init(ASGE::Renderer *renderer, int frames, std::string asset_dir[]);
-	void update();
+	void updateFrame();
+	void updatePosition(int xPos, int yPos);
+	void renderSprite(ASGE::Renderer *renderer);
 
 private:
 	ASGE::Sprite** sprite_frames;
 	int no_frames;
-	int current_frame;
-
-
+	int current_frame = 0;
 };

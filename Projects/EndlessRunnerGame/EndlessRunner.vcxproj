@@ -11,16 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Actions.h" />
     <ClInclude Include="..\..\Source\AnimSprite.h" />
     <ClInclude Include="..\..\Source\Game.h" />
     <ClInclude Include="..\..\Source\GameFont.h" />
     <ClInclude Include="..\..\Source\PlayerDino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Action.cpp" />
     <ClCompile Include="..\..\Source\AnimSprite.cpp" />
     <ClCompile Include="..\..\Source\Game.cpp" />
     <ClCompile Include="..\..\Source\GameFont.cpp" />
     <ClCompile Include="..\..\Source\main.cpp" />
+    <ClCompile Include="..\..\Source\PlayerDino.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7F5C3AA2-D205-44FE-B63C-F411DEE5C8F7}</ProjectGuid>
