@@ -18,9 +18,9 @@ private:
 	AnimSprite running;
 	ASGE::Sprite* actions[2];
 
-	int xPos;
-	int yPos;
+	int xPos = 0;
+	int yPos = 550;
 
-	int xVel;
-	int yVel;
+	int xVel = 0;
+	int yVel = 0;
 };

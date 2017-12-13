@@ -5,7 +5,8 @@
 enum class GameAction
 {
 	INVALID = -1,
-	NONE = 0,
+	DEFAULT = 0,
+	NONE,
 	JUMP,
 	LEFT,
 	RIGHT,

@@ -84,6 +84,7 @@ private:
 	int key_handler_id = -1;  /**< Input Callback ID. The callback ID assigned by the game engine. */
 	ASGE::Sprite* backdrop1;
 	ASGE::Sprite* backdrop2;
+	ASGE::Sprite* title;
 	
 	PlayerDino player;
 

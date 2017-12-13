@@ -28,6 +28,12 @@ EndlessGame::~EndlessGame()
 		backdrop2 = nullptr;
 	}
 
+	if (title)
+	{
+		delete title;
+		title = nullptr;
+	}
+
 }
 
 bool EndlessGame::init()
@@ -67,6 +73,15 @@ bool EndlessGame::init()
 		return false;
 	}
 
+	title = renderer->createRawSprite();
+	title->xPos(710);
+	title->yPos(70);
+
+	if (!title->loadTexture("..\\..\\Resources\\Textures\\Title.png"))
+	{
+		return false;
+	}
+
 	player.init(renderer.get());
 
 	return true;
@@ -74,17 +89,20 @@ bool EndlessGame::init()
 
 void EndlessGame::update(const ASGE::GameTime& us)
 {
-	player_count += us.delta_time.count() * 00.1;
-	other_count += us.delta_time.count() * 00.1;
-	if (player_count > 5)
+	if (game_action != GameAction::DEFAULT)
 	{
-		player.update();
-		player_count = 0;
-	}
-	if (other_count > 1)
-	{
-		updateBackdrop();
-		other_count = 0;
+		player_count += us.delta_time.count() * 00.1;
+		other_count += us.delta_time.count() * 00.1;
+		if (player_count > 5)
+		{
+			player.update();
+			player_count = 0;
+		}
+		if (other_count > 1)
+		{
+			updateBackdrop();
+			other_count = 0;
+		}
 	}
 	processActions();
 }
@@ -93,6 +111,7 @@ void EndlessGame::render(const ASGE::GameTime& us)
 {
 	renderer->renderSprite(*backdrop1);
 	renderer->renderSprite(*backdrop2);
+	renderer->renderSprite(*title);
 	player.render(renderer.get());
 }
 
@@ -141,13 +160,13 @@ void EndlessGame::keyHandler(const ASGE::SharedEventData data)
 void EndlessGame::processActions()
 {
 	player.move();
-	game_action = GameAction::NONE;
 }
 
 void EndlessGame::updateBackdrop()
 {
 	backdrop1->xPos(backdrop1->xPos() - 1);
 	backdrop2->xPos(backdrop2->xPos() - 1);
+	title->xPos(title->xPos() - 1);
 
 	if (backdrop1->xPos() == -1280)
 	{
@@ -157,5 +176,6 @@ void EndlessGame::updateBackdrop()
 	{
 		backdrop2->xPos(1280);
 	}
+
 }
 

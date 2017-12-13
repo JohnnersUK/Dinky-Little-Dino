@@ -4,11 +4,15 @@
 
 PlayerDino::~PlayerDino()
 {
-
+	if (actions[0])
+	{
+		delete actions[0];
+	}
 }
 
 bool PlayerDino::init(ASGE::Renderer *renderer)
 {
+	yPos = 550;
 	std::string dir[6];
 	dir[0] = ("..\\..\\Resources\\Textures\\Running1.png");
 	dir[1] = ("..\\..\\Resources\\Textures\\Running2.png");
@@ -18,12 +22,19 @@ bool PlayerDino::init(ASGE::Renderer *renderer)
 	dir[5] = ("..\\..\\Resources\\Textures\\Running6.png");
 	running.init(renderer, 5, dir);
 
+	actions[0] = renderer->createRawSprite();
+	actions[0]->yPos(550);
+	if (!actions[0]->loadTexture("..\\..\\Resources\\Textures\\Idle.png"))
+	{
+
+	}
+
 	return true;
 }
 
 void PlayerDino::update()
 {
-	if (yPos < 551)
+	if (yPos < 550)
 	{
 		yVel += 5;
 	}
@@ -37,14 +48,20 @@ void PlayerDino::update()
 		yVel = 0;
 	}
 
-
 	running.updatePosition(xPos, yPos);
 	running.updateFrame();
 }
 
 void PlayerDino::render(ASGE::Renderer * renderer)
 {
-	running.renderSprite(renderer);
+	if (game_action == GameAction::DEFAULT)
+	{
+		renderer->renderSprite(*actions[0]);
+	}
+	else if (game_action != GameAction::DEFAULT)
+	{
+		running.renderSprite(renderer);
+	}
 }
 
 void PlayerDino::move()
@@ -52,6 +69,7 @@ void PlayerDino::move()
 	if (game_action == GameAction::JUMP)
 	{
 		yVel -= 40;
+		game_action = GameAction::NONE;
 	}
 	if (game_action == GameAction::LEFT)
 	{
