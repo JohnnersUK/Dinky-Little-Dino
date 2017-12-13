@@ -18,7 +18,7 @@ bool AnimSprite::init(ASGE::Renderer *renderer, int frames, std::string asset_di
 		sprite_frames[x]->yPos(550);
 		if (!sprite_frames[x]->loadTexture(asset_dir[x].c_str()))
 		{
-
+			return false;
 		}
 	}
 	no_frames = frames;

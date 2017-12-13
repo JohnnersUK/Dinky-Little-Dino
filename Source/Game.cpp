@@ -37,7 +37,15 @@ EndlessGame::~EndlessGame()
 		delete title;
 		title = nullptr;
 	}
+
+	if (game_over)
+	{
+		delete game_over;
+		game_over = nullptr;
 	}
+
+	platforms.reset();
+}
 
 bool EndlessGame::init()
 {
@@ -49,7 +57,7 @@ bool EndlessGame::init()
 		return false;
 	}
 
-	renderer->setWindowTitle("Endless Runner");
+	renderer->setWindowTitle("Dinky little dino - A game by Oscar Johnson");
 	renderer->setClearColour(ASGE::COLOURS::BLACK);
 	renderer->setSpriteMode(ASGE::SpriteSortMode::IMMEDIATE);
 
@@ -57,8 +65,17 @@ bool EndlessGame::init()
 	this->inputs->addCallbackFnc(
 		ASGE::EventType::E_KEY, &EndlessGame::keyHandler, this);
 
-	GameFont::fonts[0] = new GameFont(
-		renderer->loadFont("..\\..\\Resources\\Fonts\\Double_Bubble_shadow.otf", 42), "default", 42);
+	if (GameFont::fonts[0] = new GameFont(
+		renderer->loadFont("..\\..\\Resources\\Fonts\\Roboto-Black.ttf", 18), "default", 42))
+	{
+		GameFont::fonts[0]->id = 1;
+		renderer->setFont(1);
+	}
+
+	if (GameFont::fonts[0]->id == -1)
+	{
+		return false;
+	}
 
 	backdrop1 = renderer->createRawSprite();
 	backdrop1->xPos(0);
@@ -79,10 +96,19 @@ bool EndlessGame::init()
 	}
 
 	title = renderer->createRawSprite();
-	title->xPos(710);
+	title->xPos(0);
 	title->yPos(70);
 
 	if (!title->loadTexture("..\\..\\Resources\\Textures\\Title.png"))
+	{
+		return false;
+	}
+
+	game_over = renderer->createRawSprite();
+	game_over->xPos(0);
+	game_over->yPos(0);
+
+	if (!game_over->loadTexture("..\\..\\Resources\\Textures\\GameOver.png"))
 	{
 		return false;
 	}
@@ -132,16 +158,25 @@ void EndlessGame::update(const ASGE::GameTime& us)
 		if (player_count > 5)
 		{
 			player_score++;
+			if (player_score > goal)
+			{
+				if (game_speed > 0.2)
+				{
+					game_speed -= 0.1f;
+					goal += 250;
+				}
+			}
 			if (player.update(platforms))
 			{
 				game_action = GameAction::DEFAULT;
 				game_state = GameState::GAMEOVER;
+				player_end_score = player_score;
 				updateScoreTable();
 				restart();
 			}
 			player_count = 0;
 		}
-		if (other_count > 1)
+		if (other_count > game_speed)
 		{
 			updateBackdrop();
 			platforms.updateBlocks();
@@ -159,9 +194,9 @@ void EndlessGame::update(const ASGE::GameTime& us)
 
 void EndlessGame::render(const ASGE::GameTime& us)
 {
+	std::string score_string;
 	if (game_state == GameState::MAIN)
 	{
-		std::string score_string;
 		score_string = "Score: " + std::to_string(player_score);
 
 		renderer->renderSprite(*backdrop1);
@@ -169,8 +204,8 @@ void EndlessGame::render(const ASGE::GameTime& us)
 		renderer->renderSprite(*title);
 
 		renderer->renderText(score_string.c_str(), 10, 20, 1.0, ASGE::COLOURS::DARKBLUE);
-		renderer->renderText(high_score_table.c_str(), score_xPos, 50, ASGE::COLOURS::DARKBLUE);
-		renderer->renderText(high_score_table2.c_str(), score_xPos + 200, 50, ASGE::COLOURS::DARKBLUE);
+		renderer->renderText(high_score_table.c_str(), score_xPos+ 100, 150, ASGE::COLOURS::DARKBLUE);
+		renderer->renderText(high_score_table2.c_str(), score_xPos + 250, 150, ASGE::COLOURS::DARKBLUE);
 
 		platforms.renderBlocks(renderer.get());
 		player.render(renderer.get());
@@ -178,7 +213,17 @@ void EndlessGame::render(const ASGE::GameTime& us)
 
 	if (game_state == GameState::GAMEOVER)
 	{
+		std::string end_score = "Score: " + std::to_string(player_end_score);
 
+		renderer->renderSprite(*game_over);
+
+		if (player_end_score == score_table[0])
+		{
+			renderer->renderText("New high score!", 900, 400, 1.0, ASGE::COLOURS::DARKRED);
+		}
+
+		renderer->renderText(end_score.c_str(), 900, 430, 1.0, ASGE::COLOURS::DARKRED);
+		renderer->renderText("- Press any key -", 900, 460, 1.0, ASGE::COLOURS::DARKRED);
 	}
 
 }
@@ -244,8 +289,8 @@ void EndlessGame::updateBackdrop()
 {
 	backdrop1->xPos(backdrop1->xPos() - 1);
 	backdrop2->xPos(backdrop2->xPos() - 1);
-	title->xPos(title->xPos() - 1);
-	score_xPos--;
+	title->xPos(title->xPos() - 2);
+	score_xPos -= 2;
 
 	if (backdrop1->xPos() == -1280)
 	{
@@ -290,6 +335,9 @@ void EndlessGame::restart()
 	player_count = 0.0f;
 	other_count = 0.0f;
 
+	game_speed = 1;
+	goal = 250;
+
 	block_count = 0;
 	player_score = 0;
 
@@ -299,7 +347,7 @@ void EndlessGame::restart()
 	backdrop2->xPos(1280);
 	backdrop2->yPos(0);
 
-	title->xPos(710);
+	title->xPos(0);
 	title->yPos(70);
 
 	int x = 0;

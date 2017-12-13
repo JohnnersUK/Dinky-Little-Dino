@@ -90,6 +90,7 @@ private:
 	ASGE::Sprite* backdrop1;
 	ASGE::Sprite* backdrop2;
 	ASGE::Sprite* title;
+	ASGE::Sprite* game_over;
 	
 	PlayerDino player;
 	Platforms platforms;
@@ -99,9 +100,13 @@ private:
 
 	float player_count = 0.0f;
 	float other_count = 0.0f;
-
 	int block_count = 0;
+
+	float game_speed = 1;
+	int goal = 250;
+
 	int player_score = 0;
+	int player_end_score = 0;
 	int score_table[9];
-	int score_xPos;
+	int score_xPos = 0;
 };

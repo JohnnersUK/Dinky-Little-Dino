@@ -4,7 +4,6 @@
 Platforms::Platforms()
 {
 	std::srand(std::time(nullptr));
-	blocks.resize(0);
 }
 
 Platforms::~Platforms()

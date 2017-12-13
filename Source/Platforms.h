@@ -10,7 +10,6 @@ public:
 	~Platforms();
 
 	void getNextBlock(ASGE::Renderer *renderer);
-	ASGE::Sprite* createBlock(ASGE::Renderer *renderer);
 	void renderBlocks(ASGE::Renderer *renderer);
 	void updateBlocks();
 
@@ -21,6 +20,8 @@ public:
 	void reset();
 
 private:
+	ASGE::Sprite* createBlock(ASGE::Renderer *renderer);
+
 	std::vector<ASGE::Sprite*> blocks;
 
 	int size = 0;

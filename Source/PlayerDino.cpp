@@ -4,9 +4,9 @@
 
 PlayerDino::~PlayerDino()
 {
-	if (actions[0])
+	if (idle_sprite)
 	{
-		delete actions[0];
+		delete idle_sprite;
 	}
 }
 
@@ -22,9 +22,9 @@ bool PlayerDino::init(ASGE::Renderer *renderer)
 	dir[5] = ("..\\..\\Resources\\Textures\\Running6.png");
 	running.init(renderer, 5, dir);
 
-	actions[0] = renderer->createRawSprite();
-	actions[0]->yPos(550);
-	if (!actions[0]->loadTexture("..\\..\\Resources\\Textures\\Idle.png"))
+	idle_sprite = renderer->createRawSprite();
+	idle_sprite->yPos(550);
+	if (!idle_sprite->loadTexture("..\\..\\Resources\\Textures\\Idle.png"))
 	{
 
 	}
@@ -63,7 +63,7 @@ void PlayerDino::render(ASGE::Renderer * renderer)
 {
 	if (game_action == GameAction::DEFAULT)
 	{
-		renderer->renderSprite(*actions[0]);
+		renderer->renderSprite(*idle_sprite);
 	}
 	else if (game_action != GameAction::DEFAULT)
 	{
@@ -119,6 +119,11 @@ bool PlayerDino::collisionCheck(Platforms platform)
 				jumped = false;
 			}
 		}
+	}
+
+	if (xPos > 1280 || xPos < -98)
+	{
+		return true;
 	}
 
 	return false;

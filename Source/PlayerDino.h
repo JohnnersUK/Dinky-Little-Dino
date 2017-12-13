@@ -28,7 +28,7 @@ private:
 	bool collisionCheck(Platforms platform);
 
 	AnimSprite running;
-	ASGE::Sprite* actions[2];
+	ASGE::Sprite* idle_sprite;
 
 	int xPos = 0;
 	int yPos = 550;
