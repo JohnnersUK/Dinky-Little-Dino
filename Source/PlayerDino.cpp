@@ -46,6 +46,7 @@ bool PlayerDino::update(Platforms platform)
 	{
 		yPos = 550;
 		yVel = 0;
+		jumped = false;
 	}
 	if (collisionCheck(platform))
 	{
@@ -74,7 +75,11 @@ void PlayerDino::move()
 {
 	if (game_action == GameAction::JUMP)
 	{
-		yVel -= 40;
+		if (!jumped)
+		{
+			yVel -= 40;
+			jumped = true;
+		}
 		game_action = GameAction::NONE;
 	}
 	if (game_action == GameAction::LEFT)
@@ -111,6 +116,7 @@ bool PlayerDino::collisionCheck(Platforms platform)
 			{
 				yPos = platform.getBlockY(x) - 75;
 				yVel = 0;
+				jumped = false;
 			}
 		}
 	}
@@ -137,3 +143,4 @@ void PlayerDino::setPlayerYVel(int new_yVel)
 {
 	yVel = new_yVel;
 }
+

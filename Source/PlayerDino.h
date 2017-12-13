@@ -15,8 +15,6 @@ public:
 
 	void move();
 
-	bool collisionCheck(Platforms platform);
-
 	int getPlayerX();
 	int getPlayerY();
 
@@ -25,6 +23,8 @@ public:
 
 
 private:
+	bool collisionCheck(Platforms platform);
+
 	AnimSprite running;
 	ASGE::Sprite* actions[2];
 
@@ -33,4 +33,6 @@ private:
 
 	int xVel = 0;
 	int yVel = 0;
+	
+	bool jumped = false;
 };
