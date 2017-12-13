@@ -144,3 +144,10 @@ void PlayerDino::setPlayerYVel(int new_yVel)
 	yVel = new_yVel;
 }
 
+void PlayerDino::reset()
+{
+	yPos = 550;
+	xPos = 0;
+	running.reset();
+}
+

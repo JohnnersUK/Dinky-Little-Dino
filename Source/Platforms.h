@@ -18,6 +18,8 @@ public:
 	int getBlockX(int size);
 	int getBlockY(int size);
 
+	void reset();
+
 private:
 	std::vector<ASGE::Sprite*> blocks;
 

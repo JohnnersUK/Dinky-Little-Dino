@@ -21,6 +21,8 @@ public:
 	void setPlayerY(int new_yPos);
 	void setPlayerYVel(int new_yVel);
 
+	void reset();
+
 
 private:
 	bool collisionCheck(Platforms platform);

@@ -15,4 +15,12 @@ enum class GameAction
 	EXIT
 };
 
+enum class GameState
+{
+	INVALID = -1,
+	MAIN,
+	GAMEOVER
+};
+
 extern std::atomic<GameAction> game_action;
+extern std::atomic<GameState> game_state;

@@ -4,7 +4,7 @@ AnimSprite::~AnimSprite()
 {
 	for (int x = 0; x < no_frames + 1; x++)
 	{
-		delete[] sprite_frames[x];
+		delete sprite_frames[x];
 	}
 }
 
@@ -46,4 +46,13 @@ void AnimSprite::updatePosition(int xPos, int yPos)
 void AnimSprite::renderSprite(ASGE::Renderer * renderer)
 {
 	renderer->renderSprite(*sprite_frames[current_frame]);
+}
+
+void AnimSprite::reset()
+{
+	for (int x = 0; x < no_frames + 1; x++)
+	{
+		sprite_frames[x]->xPos(0);
+		sprite_frames[x]->yPos(550);
+	}
 }

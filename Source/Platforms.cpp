@@ -96,3 +96,16 @@ int Platforms::getBlockY(int size)
 {
 	return blocks[size]->yPos();
 }
+
+void Platforms::reset()
+{
+	for (int x = 0; x < size; x++)
+	{
+		delete blocks[x];
+	}
+	blocks.clear();
+	size = 0;
+	current_height = 6.5;
+	blocks.resize(size);
+	std::srand(std::time(nullptr));
+}

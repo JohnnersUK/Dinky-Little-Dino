@@ -81,6 +81,10 @@ private:
 
 	void updateBackdrop();
 
+	void updateScoreTable();
+
+	void restart();
+
 private:
 	int key_handler_id = -1;  /**< Input Callback ID. The callback ID assigned by the game engine. */
 	ASGE::Sprite* backdrop1;
@@ -90,9 +94,14 @@ private:
 	PlayerDino player;
 	Platforms platforms;
 
+	std::string high_score_table = "High Scores: ";
+	std::string high_score_table2;
+
 	float player_count = 0.0f;
 	float other_count = 0.0f;
 
 	int block_count = 0;
 	int player_score = 0;
+	int score_table[9];
+	int score_xPos;
 };
