@@ -223,7 +223,7 @@ void EndlessGame::render(const ASGE::GameTime& us)
 		}
 
 		renderer->renderText(end_score.c_str(), 900, 430, 1.0, ASGE::COLOURS::DARKRED);
-		renderer->renderText("- Press any key -", 900, 460, 1.0, ASGE::COLOURS::DARKRED);
+		renderer->renderText("- Press Enter -", 900, 460, 1.0, ASGE::COLOURS::DARKRED);
 	}
 
 }
@@ -264,7 +264,10 @@ void EndlessGame::keyHandler(const ASGE::SharedEventData data)
 		}
 		else if (game_state == GameState::GAMEOVER)
 		{
-			game_state = GameState::MAIN;
+			if (key == ASGE::KEYS::KEY_ENTER)
+			{
+				game_state = GameState::MAIN;
+			}
 		}
 	}
 
